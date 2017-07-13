@@ -27,8 +27,8 @@ app.use(cookieParser());
 app.use(
   sassMiddleware({
     src: __dirname + '/sass',
-    dest: __dirname + '/public/stylesheets',
-    prefix:  '/stylesheets',
+    dest: __dirname + '/public/stylesheets',  //输出路径
+    prefix:  '/stylesheets',  //输出路径
     debug: true,
   })
 );
