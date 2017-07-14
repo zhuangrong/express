@@ -1,5 +1,4 @@
 var express = require('express');
-var sass = require('node-sass')
 var sassMiddleware = require('node-sass-middleware')
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -9,6 +8,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var login = require('./routes/login');
 
 var app = express();
 
@@ -28,7 +28,7 @@ app.use(
   sassMiddleware({
     src: __dirname + '/sass',
     dest: __dirname + '/public/stylesheets',  //输出路径
-    prefix:  '/stylesheets',  //输出路径
+    prefix:  '/stylesheets',  // the sass middleware will look for the file /sass/app.scss rather than /sass/stylesheets/app.scss.
     debug: true,
   })
 );
@@ -42,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //});
 
 app.use('/', index);
+app.use('/login', login);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
