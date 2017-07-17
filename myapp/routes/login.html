@@ -37,24 +37,29 @@
 </style>
 <script type="text/javascript">
 $(function(){
+//    $("#show").val($(".color").val())
+//    $("#show").change(function(){
+//      $(".color").val($("#show").val())
+//      $(".color").trigger("focus")
+//    })
+    getColor()
     $("#show").val($(".color").val())
-    $("#show").blur(function(){
+    $("#show").keyup(function(){
       $(".color").val($("#show").val())
-      $(".color").trigger("click")
+      getColor()
     })
-    
    
-    
-    $('.color').colorPicker({
-      color: '#00f',
-      customBG: '#ff0', 
-      opacity: false,
-      GPU: false,
-      renderCallback: function($elm, toggled) {
-        $("#show").val($elm.val())
-      }, 
-      animationSpeed: 50
-    }); // that's it
+    function getColor(){
+      $('.color').colorPicker({
+        opacity: false,
+        GPU: false,
+        renderCallback: function($elm, toggled) {
+          $("#show").val($elm.val())
+        }, 
+        animationSpeed: 0
+      })
+    }
+   
   
 })
 /*color参数
@@ -85,7 +90,7 @@ $('.color').colorPicker({
  <form action="http://10.168.1.91:3000/login" method="post">
    <div class="color-wrap">
      <input type="text" class="ipt" id="show">
-     <input type="text" name="linkcolor" class="color" value="#00f">
+     <input type="text" name="linkcolor" class="color" value="#f30">
    </div>
    <p><input type="text" name="fontsize" class="ipt" placeholder="13px"></p>
    <p><input type="submit" value="submit"></p>
